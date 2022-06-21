@@ -28,7 +28,7 @@ async def private_receive_handler(c: Client, m: Message):
     try:
         log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
         reply_markup, Stream_Text, stream_link = await gen_link(m=m, log_msg=log_msg, from_channel=False)
-        await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Dᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :** {stream_link}\n** ꜱᴛʀᴇᴀᴍɪɴɢ ʟɪɴᴋ:** {page_link}", disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN, quote=True)
+        await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Dᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :** {stream_link}\n** ꜱᴛʀᴇᴀᴍɪɴɢ ʟɪɴᴋ:** {Var.URL}watch/{get_hash(log_msg)}{log_msg.id}", disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN, quote=True)
 
         await m.reply_text(
             text=Stream_Text,
